@@ -181,7 +181,7 @@ class HueApi:
     
     @routes.post("/api/{username}/lights")
     @check_request
-    async def get_lights(self, request):
+    async def get_lights_post(self, request):
         """Handle requests to retrieve the info all lights."""
         _LOGGER.info("POST lights request body %s", self.request.text())
         return web.json_response({})
