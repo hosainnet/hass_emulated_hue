@@ -176,14 +176,14 @@ class HueApi:
     @check_request
     async def get_lights(self, request):
         """Handle requests to retrieve the info all lights."""
-        _LOGGER.info("GET lights request body %s", request.text())
+        _LOGGER.info("GET lights request body %s", await request.text())
         return web.json_response(await self.__get_all_lights())
     
     @routes.post("/api/{username}/lights")
     @check_request
     async def get_lights_post(self, request):
         """Handle requests to retrieve the info all lights."""
-        _LOGGER.info("POST lights request body %s", request.text())
+        _LOGGER.info("POST lights request body %s", await request.text())
         return web.json_response({})
     
     @routes.get("/api/{username}/lights/new")
