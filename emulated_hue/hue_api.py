@@ -364,6 +364,7 @@ class HueApi:
         _LOGGER.info("Discovery config request %s", await request.text())
         await self.config.enable_link_mode_discovery()
         result = await self.__get_bridge_config(False)
+        _LOGGER.info("Discovery config result %s", result)
         return web.json_response(result)
 
     @routes.get("/api/{username}/config")
