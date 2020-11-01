@@ -176,14 +176,17 @@ class HueApi:
     @check_request
     async def get_lights(self, request):
         """Handle requests to retrieve the info all lights."""
-        _LOGGER.info("GET lights request body %s", await request.text())
+        _LOGGER.info("GET lights request")
+        _LOGGER.info("GET lights request body %s", request.headers)
         return web.json_response(await self.__get_all_lights())
     
     @routes.post("/api/{username}/lights")
     @check_request
     async def get_lights_post(self, request):
         """Handle requests to retrieve the info all lights."""
-        _LOGGER.info("POST lights request body %s", await request.text())
+        _LOGGER.info("POST lights request")
+        _LOGGER.info("POST lights request body %s", request.headers)
+        _LOGGER.info("POST lights request body %s", await request.read())
         return web.json_response({})
     
     @routes.get("/api/{username}/lights/new")
@@ -361,7 +364,6 @@ class HueApi:
     @check_request
     async def get_discovery_config(self, request):
         """Process a request to get the (basic) config of this emulated bridge."""
-        _LOGGER.info("Discovery config request %s", await request.text())
         await self.config.enable_link_mode_discovery()
         result = await self.__get_bridge_config(False)
         _LOGGER.info("Discovery config result %s", result)
