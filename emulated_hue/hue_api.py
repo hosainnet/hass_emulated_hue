@@ -361,6 +361,7 @@ class HueApi:
     @check_request
     async def get_discovery_config(self, request):
         """Process a request to get the (basic) config of this emulated bridge."""
+        _LOGGER.info("Discovery config request %s", await request.text())
         await self.config.enable_link_mode_discovery()
         result = await self.__get_bridge_config(False)
         return web.json_response(result)
